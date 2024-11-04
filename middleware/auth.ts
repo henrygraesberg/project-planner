@@ -9,7 +9,7 @@ export default defineNuxtRouteMiddleware((to) => {
   if(!user.value && to.path === '/dashboard') {
     console.log('redirecting to /')
     return navigateTo('/')
-  } else if(user.value && to.path === '/auth') {
+  } else if(user.value && (to.path === '/auth' || to.path === '/')) {
     return navigateTo('/dashboard')
   }
 })
