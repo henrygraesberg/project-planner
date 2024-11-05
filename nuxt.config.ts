@@ -4,7 +4,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@formkit/auto-animate/nuxt',
     '@nuxt/icon',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    '@nuxt/fonts'
   ],
   compatibilityDate: '2024-04-03',
   devtools: {
@@ -22,6 +23,9 @@ export default defineNuxtConfig({
             'primary-green': 'rgb(33 255 98 / <alpha-value>)',
             'secondary-green': 'rgb(16 255 168 / <alpha-value>)',
             'primary-cyan': 'rgb(35 252 247 / <alpha-value>)'
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif']
           }
         }
       }
