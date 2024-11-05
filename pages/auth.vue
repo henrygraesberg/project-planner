@@ -62,7 +62,7 @@ onMounted(() => {
       <button type="submit" class="w-full bg-green-400 rounded-lg p-1">
         {{ isSignUp ? 'Sign Up' : 'Sign In' }}
       </button>
-      <button type="button" @click="isSignUp = !isSignUp" class="border-b-2 border-b-black">
+      <button type="button" @click="isSignUp = !isSignUp" class="underline">
         {{ isSignUp ? 'Already have an account? Log in instead' : 'New user? Create an account' }}
       </button>
     </form>

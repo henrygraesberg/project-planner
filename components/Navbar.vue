@@ -36,7 +36,7 @@ onMounted(() => {
 <template>
   <nav class="flex px-14 py-3 justify-between">
     <NuxtLink to="/">
-      <h1>outline</h1>
+      <h1 class="font-inter font-bold text-3xl">Outline</h1>
     </NuxtLink>
     <div class="flex">
       <button class="p-2 bg-text-grey grid place-content-center rounded-full" @click="() => {userMenuOpen = !userMenuOpen}">
@@ -59,20 +59,20 @@ onMounted(() => {
         <h1 class="text-xl">
           Welcome{{ loggedIn ? ',' : ' to' }}
           <br />
-          <span class="font-bold">{{ loggedIn ? user?.user_metadata.first_name : 'Outline' }}</span>
+          <span class="font-extrabold">{{ loggedIn ? user?.user_metadata.first_name : 'Outline' }}</span>
         </h1>
 
         <div v-show="loggedIn" class="flex flex-col">
-        <NuxtLink to="/profile" @click="userMenuOpen = false">
+        <NuxtLink to="/profile" @click="userMenuOpen = false" class="font-thin">
           Profile
         </NuxtLink>
-        <button @click="() => {signOut(); userMenuOpen = false}" class="self-end">
+        <button @click="() => {signOut(); userMenuOpen = false}" class="self-end font-thin underline">
           Log out
         </button>
         </div>
         
         <div v-show="!loggedIn">
-        <NuxtLink to="/auth" @click="userMenuOpen = false">
+        <NuxtLink to="/auth" @click="userMenuOpen = false" class="font-thin underline">
           Sign in/Sign up
         </NuxtLink>
         </div>
