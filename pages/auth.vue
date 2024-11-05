@@ -3,10 +3,12 @@ definePageMeta({
   middleware: ['auth']
 })
 
+const firstName = ref('')
+const lastName = ref('')
 const email = ref('')
 const password = ref('')
 
-const signedInCookie = useCookie('signedInPreviously')
+const signedInCookie = useCookie('signedInPreviously', {default: () => false})
 const isSignUp = ref(true)
 
 const client = useSupabaseClient()
@@ -15,6 +17,12 @@ const signUp = async () => {
   const { data, error } = await client.auth.signUp({
     email: email.value,
     password: password.value,
+    options: {
+      data: {
+        first_name: firstName.value,
+        last_name: lastName.value,
+      }
+    }
   })
 }
 const signIn = async () => {
@@ -47,9 +55,11 @@ onMounted(() => {
       <h2 class="font-bold text-2xl">
         {{ isSignUp ? "Create an account" : "Log into your account" }}
       </h2>
+      <input type="text" placeholder="First name" v-model="firstName" class="w-full p-2 rounded-lg" v-show="isSignUp" />
+      <input type="text" placeholder="Last name" v-model="lastName" class="w-full p-2 rounded-lg" v-show="isSignUp" />
       <input type="email" placeholder="Email" v-model="email" class="w-full p-2 rounded-lg" />
       <input type="password" placeholder="Password" v-model="password" class="w-full p-2 rounded-lg" />
-      <button type="submit" class="w-full bg-green-400 rounded-lg">
+      <button type="submit" class="w-full bg-green-400 rounded-lg p-1">
         {{ isSignUp ? 'Sign Up' : 'Sign In' }}
       </button>
       <button type="button" @click="isSignUp = !isSignUp" class="border-b-2 border-b-black">

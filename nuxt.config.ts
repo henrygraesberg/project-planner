@@ -18,8 +18,10 @@ export default defineNuxtConfig({
       theme: {
         extend: {
           colors: {
-            'text-grey-fallback': '',
-            'text-grey': 'oklch(80% 0 0 / <alpha-value>)'
+            'text-grey': 'rgb(190 190 190 / <alpha-value>)',
+            'primary-green': 'rgb(33 255 98 / <alpha-value>)',
+            'secondary-green': 'rgb(16 255 168 / <alpha-value>)',
+            'primary-cyan': 'rgb(35 252 247 / <alpha-value>)'
           }
         }
       }
