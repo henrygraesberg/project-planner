@@ -18,16 +18,11 @@ const signOut = async () => {
 const user = useSupabaseUser()
 onMounted(() => {
   watchEffect(() => {
-    console.log("watch effect")
-    console.log(user.value)
-
     if (user.value) {
       loggedIn.value = true
     } else {
       loggedIn.value = false
     }
-
-    console.log(loggedIn.value)
   })
 })
 
@@ -36,7 +31,7 @@ onMounted(() => {
 <template>
   <nav class="flex px-14 py-3 justify-between">
     <NuxtLink to="/">
-      <h1 class="font-inter font-bold text-3xl">Outline</h1>
+      <h1 class="font-inter font-semibold text-3xl logo">Outline</h1>
     </NuxtLink>
     <div class="flex">
       <button class="p-2 bg-text-grey grid place-content-center rounded-full" @click="() => {userMenuOpen = !userMenuOpen}">
@@ -48,7 +43,7 @@ onMounted(() => {
       right-14
       top-14
       bg-gradient-to-tr
-      from-primary-green
+      from-secondary-green
       to-primary-cyan
       p-3
       rounded-xl
