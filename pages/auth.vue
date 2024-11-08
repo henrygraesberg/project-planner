@@ -33,7 +33,7 @@ const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 
-const authError: globalThis.Ref<null, any> = ref(null)
+const authError: globalThis.Ref<any, any> = ref(null)
 
 const signedInCookie = useCookie('signedInPreviously', {default: () => false})
 const isSignUp = ref(true)
