@@ -58,7 +58,7 @@ onMounted(() => {
         </h1>
 
         <div v-show="loggedIn" class="flex flex-col">
-        <NuxtLink to="/profile" @click="userMenuOpen = false" class="font-thin">
+        <NuxtLink to="/profile" @click="userMenuOpen = false" class="font-thin w-fit">
           Profile
         </NuxtLink>
         <button @click="() => {signOut(); userMenuOpen = false}" class="self-end font-thin underline">

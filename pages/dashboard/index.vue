@@ -3,7 +3,7 @@ definePageMeta({
   middleware: ['auth'],
 })
 useSeoMeta({
-  title: 'Outline - Proflie'
+  title: 'Outline - Dashboard'
 })
 useHead({
   htmlAttrs: {
@@ -20,5 +20,7 @@ useHead({
 </script>
 
 <template>
-  <h1>Profile</h1>
+  <div>
+    <h1>Dashboard</h1>
+  </div>
 </template>
