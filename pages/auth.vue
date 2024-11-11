@@ -71,6 +71,7 @@ const signUp = async () => {
     }
   }  
 }
+
 const signIn = async () => {
   authError.value = null
 
@@ -81,6 +82,23 @@ const signIn = async () => {
 
   console.log(data)
   authError.value = error
+}
+
+const loading = ref(false)
+
+const handleAuth = async () => {
+  try {
+    loading.value = true
+    if (isSignUp.value) {
+      await signUp()
+    } else {
+      await signIn()
+    }
+  } catch (error) {
+    authError.value = error
+  } finally {
+    loading.value = false
+  }
 }
 
 const user = useSupabaseUser()
@@ -103,7 +121,7 @@ onMounted(() => {
   </div>
   <div class="flex justify-center items-center h-screen">
     <form
-    @submit.prevent="() => (isSignUp ? signUp() : signIn())"
+    @submit.prevent="handleAuth"
     class="flex flex-col items-center gap-6 min-w-52 w-[50vw] max-w-[50vw] p-4 bg-text-grey/60 rounded-lg max-h-fit"
     >
       <h2 class="font-bold text-2xl">
@@ -118,7 +136,7 @@ onMounted(() => {
       <input required type="password" placeholder="Password*" v-model="password" class="w-full p-2 rounded-lg border-4 border-secondary-green focus:border-primary-cyan outline-none" />
       <input required v-if="isSignUp" type="password" v-model="confirmPassword" placeholder="Confirm password*" class="w-full p-2 rounded-lg border-4 border-secondary-green focus:border-primary-cyan outline-none" />
       <button type="submit" class="w-full bg-green-400 rounded-lg p-1">
-        {{ isSignUp ? 'Sign Up' : 'Sign In' }}
+        {{ loading ? 'Loading...' : (isSignUp ? 'Sign Up' : 'Sign In') }}
       </button>
       <button type="button" @click="isSignUp = !isSignUp; authError = null" class="underline">
         {{ isSignUp ? 'Already have an account? Log in instead' : 'New to Outline? Create an account' }}
